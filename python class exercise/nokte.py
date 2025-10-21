@@ -378,14 +378,19 @@ from random import random , choice
 
 
 
-def func(start , stop , step = 1):
-    start
-    while start < stop :
-        yield start
-        start += step
-g = func(1 , 100 , 1)
-print(list(g))
+# def func(start , stop , step = 1):
+#     start
+#     while start < stop :
+#         yield start
+#         start += step
+# g = func(1 , 100 , 1)
+# print(list(g))
         
+        
+        
+if (n := int(input("n? "))) > 0:
+    print("Positive:", n)
+
         
         
 
