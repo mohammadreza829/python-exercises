@@ -287,7 +287,7 @@ print(a())
 print(a())
 print(a())
 
-# def cache_decoy(func):                      #77    shakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+# def cache_decoy(func):                      #77    shakkkkkkk
 
 
 # methods = {
