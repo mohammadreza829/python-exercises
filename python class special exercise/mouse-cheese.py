@@ -65,7 +65,7 @@ result = find_path(mouse_row, mouse_col, cheese_row, cheese_col)
 
 
 if result:
-    print("\nPath found! cheese founded")
+    print("\ncheese founded")
 else:
     print("\nNo path found!")
 
