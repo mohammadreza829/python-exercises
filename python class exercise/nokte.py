@@ -387,9 +387,18 @@ from random import random , choice
 # print(list(g))
         
         
-        
-if (n := int(input("n? "))) > 0:
-    print("Positive:", n)
+#والروس    
+# if (n := int(input("n? "))) > 0:
+#     print("Positive:", n)
+
+
+s = 'hello'
+# s[0] = 'H'  # ❌ TypeError!
+
+# راه حل:
+s = 'H' + s[1:]
+print(s)      # 'Hello'
+print(id(s))  # آدرس جدید! 🔄
 
         
         
