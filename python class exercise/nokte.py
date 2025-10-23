@@ -392,13 +392,13 @@ from random import random , choice
 #     print("Positive:", n)
 
 
-s = 'hello'
-# s[0] = 'H'  # ❌ TypeError!
+# s = 'hello'
+# # s[0] = 'H'  # ❌ TypeError!
 
-# راه حل:
-s = 'H' + s[1:]
-print(s)      # 'Hello'
-print(id(s))  # آدرس جدید! 🔄
+# # راه حل:
+# s = 'H' + s[1:]
+# print(s)      # 'Hello'
+# print(id(s))  # آدرس جدید! 🔄
 
         
         
