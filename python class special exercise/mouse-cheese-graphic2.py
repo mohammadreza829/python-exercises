@@ -38,11 +38,10 @@ if matrix[cheese_row][cheese_col] != 1:
 # ------------------------------
 # جهت‌های حرکت (۸ جهت)
 # ------------------------------
-directions = [(-1, -1), (-1, 0), (-1, 1),
-              (0, -1),           (0, 1),
-              (1, -1),  (1, 0),  (1, 1)]
+directions = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 
 path = [(mouse_row, mouse_col)]
+
 
 # ------------------------------
 # تابع بازگشتی مسیر‌یابی
@@ -65,6 +64,7 @@ def find_path(current_row, current_col, cheese_row, cheese_col):
                 path.pop()
 
     return False
+
 
 # ------------------------------
 # اجرای الگوریتم
@@ -100,22 +100,44 @@ try:
     if result and len(path) > 1:
         path_x = [pos[1] for pos in path]
         path_y = [pos[0] for pos in path]
-        ax.plot(path_x, path_y, color="limegreen", linewidth=3,
-                marker="o", markersize=6, label="Path")
+        ax.plot(
+            path_x,
+            path_y,
+            color="limegreen",
+            linewidth=3,
+            marker="o",
+            markersize=6,
+            label="Path",
+        )
 
     # نمایش موش و پنیر
-    ax.plot(mouse_col, mouse_row, marker="o", color="dodgerblue",
-            markersize=14, label="Mouse", markeredgecolor="white")
-    ax.plot(cheese_col, cheese_row, marker="*", color="gold",
-            markersize=18, label="Cheese", markeredgecolor="black")
+    ax.plot(
+        mouse_col,
+        mouse_row,
+        marker="o",
+        color="dodgerblue",
+        markersize=14,
+        label="Mouse",
+        markeredgecolor="white",
+    )
+    ax.plot(
+        cheese_col,
+        cheese_row,
+        marker="*",
+        color="gold",
+        markersize=18,
+        label="Cheese",
+        markeredgecolor="black",
+    )
 
     # گرید زیباتر
     ax.set_xticks(np.arange(12) - 0.5, minor=True)
     ax.set_yticks(np.arange(12) - 0.5, minor=True)
     ax.grid(which="minor", color="gray", linestyle="--", linewidth=0.5)
 
-    ax.tick_params(which="both", bottom=False, left=False,
-                   labelbottom=False, labelleft=False)
+    ax.tick_params(
+        which="both", bottom=False, left=False, labelbottom=False, labelleft=False
+    )
     ax.legend(loc="upper right")
     ax.set_title("Mouse Path Finder", fontsize=16, fontweight="bold", color="#333333")
 
