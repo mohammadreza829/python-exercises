@@ -11,6 +11,13 @@ for i in range(1, 11):
         matrix[i][j] = randint(0, 1)
 
 
+print("Initial Matrix:")
+for i in range(1, 11):
+    for j in range(1, 11):
+        print(matrix[i][j], end="  ")
+    print()
+
+
 mouse_row = int(input("\nEnter mouse row (1-10): "))
 mouse_col = int(input("Enter mouse col (1-10): "))
 
@@ -34,37 +41,29 @@ directions = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 
 path = [(mouse_row, mouse_col)]
 
 
-
 def find_path(current_row, current_col, cheese_row, cheese_col):
-   
+
     if current_row == cheese_row and current_col == cheese_col:
         return True
 
-   
     matrix[current_row][current_col] = 2
 
-    
     for direction in directions:
         new_row = current_row + direction[0]
         new_col = current_col + direction[1]
 
-        
         if 1 <= new_row <= 10 and 1 <= new_col <= 10:
             if matrix[new_row][new_col] == 1:
                 print(f"Moving to: ({new_row}, {new_col})")
 
-                
                 path.append((new_row, new_col))
 
                 if find_path(new_row, new_col, cheese_row, cheese_col):
                     return True
 
-                
                 path.pop()
 
-   
     return False
-
 
 
 print("\nSearching for path...")
