@@ -2,13 +2,20 @@ from random import randint
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Create 12x12 matrix with zero border
 matrix = [[0] * 12 for _ in range(12)]
 
-# Fill the inner 10x10 area with random 0s and 1s
-for i in range(1, 11):
-    for j in range(1, 11):
+
+for i in range(1, 11):  
+    for j in range(1, 11):  
         matrix[i][j] = randint(0, 1)
+
+
+print("Initial Matrix:")
+for i in range(1, 11):  
+    for j in range(1, 11):
+        print(matrix[i][j], end="  ")
+    print()
+
 
 # Get mouse coordinates
 mouse_row = int(input("\nEnter mouse row (1-10): "))
