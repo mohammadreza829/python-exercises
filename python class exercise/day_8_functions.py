@@ -304,7 +304,7 @@ print(a())
 #             method = methods_dict[typ]
 #             return method(arg)
 #         else :
-#             return "نامعتبر"
+#             return "unknown type"
 #     return dispatcher
 
 # def error_handler(func, handlers_dict)          #89  shakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk  
