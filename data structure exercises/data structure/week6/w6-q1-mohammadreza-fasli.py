@@ -28,15 +28,13 @@ def simple_calc(num_lst):
         return "Error: Invalid right numbers"
     right_value = int(right_numbers)
 
-    return left_value + right_value
+    result = left_value + right_value
+    return [int(x) for x in str(result)]
 
 
-# استفاده مستقیم از لیست پایتون (بدون input)
-test_list = [9, 9, 9, "+", 5]
-print(f"Test list: {test_list}")
-
+# گرفتن ورودی بصورت رشته لیست پایتونی:
+user_input = input("enter your list :")
+# ارزیابی ورودی به لیست پایتونی:
+test_list = eval(user_input)
 result = simple_calc(test_list)
-print("Result:", result)
-if isinstance(result, int):
-    res = [int(x) for x in str(result)]
-    print("Result as list:", res)
+print(result)
