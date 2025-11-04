@@ -1,33 +1,42 @@
 def simple_calc(num_lst):
-   
+    if not num_lst:
+        return "Error: Invalid Sequence"
+
+    str_lst = [str(item) for item in num_lst]
+
     operator_index = None
-    for i, item in enumerate(num_lst):
-        if not isinstance(item, int):
+
+    for i, item in enumerate(str_lst):
+        if item == "+":
             operator_index = i
-            # if operator_index == 0:
-            #     return "Error: Invalid Sequence"
-            # elif operator_index != "+" :
-            #     return "Error: Calculation Error"
             break
-    
+
     if operator_index is None:
-        return None
-    
-    
-    left_numbers = ''.join(str(x) for x in num_lst[:operator_index])
+        return "Error: No + operator found"
+    if operator_index == 0:
+        return "Error: Operator at start"
+    if operator_index == len(str_lst) - 1:
+        return "Error: Operator at end"
+
+    left_numbers = "".join(str_lst[:operator_index])
+    if not left_numbers.isdigit():
+        return "Error: Invalid left numbers"
     left_value = int(left_numbers)
-    
-   
-    right_numbers = ''.join(str(x) for x in num_lst[operator_index+1:])
+
+    right_numbers = "".join(str_lst[operator_index + 1 :])
+    if not right_numbers.isdigit():
+        return "Error: Invalid right numbers"
     right_value = int(right_numbers)
-    
-    
-    operator = num_lst[operator_index]
-    if operator == '+':
-        return left_value + right_value
+
+    return left_value + right_value
 
 
+# استفاده مستقیم از لیست پایتون (بدون input)
+test_list = [9, 9, 9, "+", 5]
+print(f"Test list: {test_list}")
 
-num = [9, 9, 9, '+', 5]
-result = simple_calc(num)
-print("نتیجه:", result)  # خروجی: 1004
+result = simple_calc(test_list)
+print("Result:", result)
+if isinstance(result, int):
+    res = [int(x) for x in str(result)]
+    print("Result as list:", res)
