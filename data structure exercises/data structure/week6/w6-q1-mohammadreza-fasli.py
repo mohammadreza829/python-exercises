@@ -1,6 +1,6 @@
 def simple_calc(num_lst):
     if not num_lst:
-        return "Error: Invalid Sequence"
+        return "Error: Invalid Input"
 
     str_lst = [str(item) for item in num_lst]
 
