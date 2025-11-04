@@ -15,17 +15,17 @@ def simple_calc(num_lst):
         return "Error: Invalid Sequence"
     left_numbers = "".join(str_lst[:operator_index])
     if not left_numbers.isdigit():
-        return "Error: Calculation Error"
+        return "Error: Invalid Input"
     left_value = int(left_numbers)
     right_numbers = "".join(str_lst[operator_index + 1 :])
     if not right_numbers.isdigit():
-        return "Error: Calculation Error"
+        return "Error: Invalid Input"
     right_value = int(right_numbers)
     result = left_value + right_value
     return [int(x) for x in str(result)]
 
 
-user_input = input("enter your list : ")
+user_input = input()
 tokens = []
 curr = ""
 in_number = False
@@ -40,9 +40,7 @@ for c in user_input:
             in_number = False
         if c == "+":
             tokens.append("+")
-
 if curr:
     tokens.append(int(curr))
-
 result = simple_calc(tokens)
 print(result)
