@@ -12,29 +12,28 @@ def simple_calc(num_lst):
             break
 
     if operator_index is None:
-        return "Error: No + operator found"
+        return "Error: Invalid Input"
     if operator_index == 0:
-        return "Error: Operator at start"
+        return "Error: Invalid Sequence"
     if operator_index == len(str_lst) - 1:
-        return "Error: Operator at end"
+        return "Error: Invalid Sequence"
 
     left_numbers = "".join(str_lst[:operator_index])
     if not left_numbers.isdigit():
-        return "Error: Invalid left numbers"
+        return "Error: Calculation Error"
     left_value = int(left_numbers)
 
     right_numbers = "".join(str_lst[operator_index + 1 :])
     if not right_numbers.isdigit():
-        return "Error: Invalid right numbers"
+        return "Error: Calculation Error"
     right_value = int(right_numbers)
 
     result = left_value + right_value
     return [int(x) for x in str(result)]
 
 
-# گرفتن ورودی بصورت رشته لیست پایتونی:
 user_input = input("enter your list :")
-# ارزیابی ورودی به لیست پایتونی:
+
 test_list = eval(user_input)
 result = simple_calc(test_list)
 print(result)
