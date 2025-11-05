@@ -43,11 +43,15 @@ class CircularQueue:
             print(f"QUEUE: {self.queue}")
 
 
+
 capacity = int(input())
 cq = CircularQueue(capacity)
 
-while True:
-    command = input().strip().split()
+
+import sys
+
+for line in sys.stdin:
+    command = line.strip().split()
 
     if not command:
         continue
