@@ -7,7 +7,6 @@ class BinaryTree:
             return []
 
         result = [self.tree[index]]
-
         left_index = 2 * index + 1
         right_index = 2 * index + 2
 
@@ -29,7 +28,6 @@ class BinaryTree:
 
         return result
 
-
     def postorder(self, index):
         if index >= len(self.tree) or self.tree[index] is None:
             return []
@@ -43,42 +41,19 @@ class BinaryTree:
 
         return result
 
+user_input = input()
 
-tree_array = [
-    None,
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    None,
-    "F",
-    None,
-    None,
-    "G",
-    "H",
-    None,
-    None,
-    None,
-]
-tree_array = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    None,
-    "F",
-    None,
-    None,
-    "G",
-    "H",
-    None,
-    None,
-    None,
-    None,
-]
+
+tokens = user_input.split()
+tree_array = []
+
+for token in tokens:
+    if token.lower() == "none":
+        tree_array.append(None)
+    else:
+        tree_array.append(token)
+
 bt = BinaryTree(tree_array)
-print("In_Order:", bt.inorder(0))  
-print("Pre_Order:", bt.preorder(0))  
-print("Post_Order:", bt.postorder(0))  
+print("In_Order:", bt.inorder(0))
+print("Pre_Order:", bt.preorder(0))
+print("Post_Order:", bt.postorder(0))
