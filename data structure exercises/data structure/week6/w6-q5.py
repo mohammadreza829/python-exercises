@@ -61,9 +61,9 @@ for t in inp:
 tt = TreeTraversal(tree_data)
 
 pre = tt.traverse_pre(0)
-mid = tt.traverse_mid(0)
+In_o = tt.traverse_mid(0)
 post = tt.traverse_post(0)
 
-print("Pre: [" + ", ".join(pre) + "]")
-print("Mid: [" + ", ".join(mid) + "]")
-print("Post: [" + ", ".join(post) + "]")
+print("In_Order: [" + ", ".join(In_o) + "]")
+print("Pre_Order: [" + ", ".join(pre) + "]")
+print("Post_Order: [" + ", ".join(post) + "]")
