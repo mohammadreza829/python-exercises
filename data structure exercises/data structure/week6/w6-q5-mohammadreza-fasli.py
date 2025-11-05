@@ -41,19 +41,31 @@ class BinaryTree:
 
         return result
 
+
 user_input = input()
 
+tokens = (
+    user_input.replace(",", " ")
+    .replace("[", " ")
+    .replace("]", " ")
+    .replace("'", "")
+    .split()
+)
 
-tokens = user_input.split()
 tree_array = []
-
 for token in tokens:
     if token.lower() == "none":
         tree_array.append(None)
-    else:
+    elif token:
         tree_array.append(token)
 
 bt = BinaryTree(tree_array)
-print("In_Order:", bt.inorder(0))
-print("Pre_Order:", bt.preorder(0))
-print("Post_Order:", bt.postorder(0))
+
+
+in_result = bt.inorder(0)
+pre_result = bt.preorder(0)
+post_result = bt.postorder(0)
+
+print("In_Order: [" + ", ".join(in_result) + "]")
+print("Pre_Order: [" + ", ".join(pre_result) + "]")
+print("Post_Order: [" + ", ".join(post_result) + "]")
