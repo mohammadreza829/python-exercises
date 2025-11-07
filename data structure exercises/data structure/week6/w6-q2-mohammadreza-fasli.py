@@ -43,10 +43,8 @@ class CircularQueue:
             print(f"QUEUE: {self.queue}")
 
 
-
 capacity = int(input())
 cq = CircularQueue(capacity)
-
 
 import sys
 
