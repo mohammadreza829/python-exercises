@@ -7,7 +7,7 @@ def login_required(func):
         if username in lstt:
             return func(username)
         else:
-            return "you are not logged in"
+            print(f"{username} is not logged in") 
 
     return inner
 
@@ -17,5 +17,5 @@ def hell(username):
     print(f"hello {username}")
 
 
-# hell('ali')
+hell('ali')
 hell("hacker")
