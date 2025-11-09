@@ -11,6 +11,5 @@ def dec(func):
 def out():
     print("hello")
     
-dd = dec(out)
-print(dd())
+out()
     
