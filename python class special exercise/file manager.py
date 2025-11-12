@@ -111,18 +111,6 @@
 
 # print(dir(tuple))
 
-# walrus
-# print(w:=5)
-# print(w+9)
 
-# std = []
-
-
-# while (s := input('Enter student name(q for quit): ')) != 'q':
-#     std.append(s)
-    
-
-# f = lambda x: x * x
-# print(f(5))
 
 
