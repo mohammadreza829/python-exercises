@@ -1,10 +1,5 @@
-# -*- coding: utf-8 -*-
-
 class BookNode:
-    """
-    کلاسی برای نمایش یک گره در درخت جستجوی دودویی.
-    هر گره نمایانگر یک کتاب با شناسه (ISBN) و عنوان است.
-    """
+
     def __init__(self, isbn, title):
         self.isbn = isbn
         self.title = title
@@ -12,15 +7,12 @@ class BookNode:
         self.right = None
 
 class LibraryBST:
-    """
-    کلاسی برای پیاده‌سازی درخت جستجوی دودویی برای مدیریت کتابخانه.
-    این کلاس شامل متدهایی برای افزودن، حذف، جستجو و نمایش کتاب‌هاست.
-    """
+
     def __init__(self):
         self.root = None
 
     def add(self, isbn, title):
-        """افزودن یک کتاب جدید به درخت."""
+
         if self.root is None:
             self.root = BookNode(isbn, title)
             return f"Book {isbn} {title} added"
@@ -37,11 +29,11 @@ class LibraryBST:
                     current.right = BookNode(isbn, title)
                     return f"Book {isbn} {title} added"
                 current = current.right
-            else:  # ISBN تکراری
+            else: 
                 return "Book already exists"
 
     def find(self, isbn):
-        """جستجوی یک کتاب بر اساس ISBN و نمایش مسیر."""
+
         path = []
         current = self.root
         while current:
@@ -50,13 +42,12 @@ class LibraryBST:
                 current = current.left
             elif isbn > current.isbn:
                 current = current.right
-            else:  # پیدا شد
+            else:  
                 return f"Found: {current.isbn} {current.title}\nPath: {', '.join(path)}"
         return "Not found"
 
     def remove(self, isbn):
-        """حذف یک کتاب از درخت."""
-        # ابتدا گره را پیدا می‌کنیم تا عنوان آن را برای پیام خروجی داشته باشیم
+
         node_to_remove = self._find_node_for_removal(isbn)
         if not node_to_remove:
             return "Book not found"
@@ -66,7 +57,7 @@ class LibraryBST:
         return f"Book {isbn} {title} removed"
 
     def _find_node_for_removal(self, isbn):
-        """یک تابع کمکی برای پیدا کردن گره جهت حذف."""
+
         node = self.root
         while node:
             if isbn < node.isbn:
@@ -78,14 +69,14 @@ class LibraryBST:
         return None
 
     def _find_min_node(self, node):
-        """پیدا کردن کوچکترین گره در یک زیردرخت (جانشین پیش‌ترتیب)."""
+
         current = node
         while current and current.left:
             current = current.left
         return current
 
     def _remove_recursive(self, node, isbn):
-        """تابع بازگشتی برای حذف گره."""
+
         if node is None:
             return node
 
@@ -94,13 +85,13 @@ class LibraryBST:
         elif isbn > node.isbn:
             node.right = self._remove_recursive(node.right, isbn)
         else:
-            # حالت ۱: گره برگ یا یک فرزند دارد
+
             if node.left is None:
                 return node.right
             elif node.right is None:
                 return node.left
             
-            # حالت ۲: گره دو فرزند دارد
+
             temp = self._find_min_node(node.right)
             node.isbn = temp.isbn
             node.title = temp.title
@@ -109,7 +100,7 @@ class LibraryBST:
         return node
 
     def show(self):
-        """نمایش تمام کتاب‌ها به ترتیب ISBN با پیمایش میان‌ترتیب."""
+
         if self.root is None:
             return "No books in library"
         
