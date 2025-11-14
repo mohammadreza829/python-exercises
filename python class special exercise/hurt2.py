@@ -1,4 +1,3 @@
-
 for y in range(15, -15, -1):
     line = ""
     for x in range(-30, 30):
