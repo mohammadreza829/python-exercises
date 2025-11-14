@@ -1,4 +1,6 @@
 import sys
+
+
 class Node:
 
     def __init__(self, isbn, title, parent=None):
@@ -7,6 +9,7 @@ class Node:
         self.parent = parent
         self.left = None
         self.right = None
+
 
 class ParentAwareBST:
 
@@ -43,7 +46,7 @@ class ParentAwareBST:
         while node and node.isbn != isbn:
             path.append(str(node.isbn))
             node = node.left if isbn < node.isbn else node.right
-        
+
         if node:
             path.append(str(node.isbn))
             print(f"Found: {node.isbn} {node.title}")
@@ -65,13 +68,13 @@ class ParentAwareBST:
         node = self.root
         while node and node.isbn != isbn:
             node = node.left if isbn < node.isbn else node.right
-        
+
         if not node:
             print("Book not found")
             return
-        
+
         print(f"Book {isbn} {node.title} removed")
-        
+
         if not node.left:
             self._transplant(node, node.right)
         elif not node.right:
@@ -80,7 +83,7 @@ class ParentAwareBST:
             successor = node.right
             while successor.left:
                 successor = successor.left
-            
+
             if successor.parent != node:
                 self._transplant(successor, successor.right)
                 successor.right = node.right
@@ -89,12 +92,12 @@ class ParentAwareBST:
             self._transplant(node, successor)
             successor.left = node.left
             successor.left.parent = successor
-            
+
     def display(self):
         if not self.root:
             print("No books in library")
             return
-            
+
         print("Books:")
         node, stack = self.root, []
         while stack or node:
@@ -106,19 +109,21 @@ class ParentAwareBST:
                 print(f"{node.isbn} {node.title}")
                 node = node.right
 
+
 def main_controller():
 
     tree = ParentAwareBST()
 
     lines = sys.stdin.readlines()
-    
+
     for line in lines:
         line = line.strip()
-        if not line: continue
-        
+        if not line:
+            continue
+
         parts = line.split()
         command = parts[0]
-        
+
         try:
             if command == "exit":
                 break
@@ -135,6 +140,6 @@ def main_controller():
         except (ValueError, IndexError):
             print("invalid input")
 
+
 if __name__ == "__main__":
     main_controller()
-
