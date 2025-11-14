@@ -1,150 +1,151 @@
-class BookNode:
+# -*- coding: utf-8 -*-
 
-    def __init__(self, isbn, title):
-        self.isbn = isbn
-        self.title = title
-        self.left = None
-        self.right = None
-
-class LibraryBST:
+class BookManager:
+    """
+    یک نسخه تغییر یافته از درخت جستجوی دودویی.
+    این نسخه شامل یک باگ عمدی در متد حذف است.
+    """
+    
+    class Book:
+        """کلاس داخلی برای نمایش گره‌های درخت."""
+        def __init__(self, isbn, title):
+            self.isbn = isbn
+            self.title = title
+            self.left = None
+            self.right = None
 
     def __init__(self):
         self.root = None
 
-    def add(self, isbn, title):
-
-        if self.root is None:
-            self.root = BookNode(isbn, title)
-            return f"Book {isbn} {title} added"
-        
-        current = self.root
-        while True:
-            if isbn < current.isbn:
-                if current.left is None:
-                    current.left = BookNode(isbn, title)
-                    return f"Book {isbn} {title} added"
-                current = current.left
-            elif isbn > current.isbn:
-                if current.right is None:
-                    current.right = BookNode(isbn, title)
-                    return f"Book {isbn} {title} added"
-                current = current.right
-            else: 
-                return "Book already exists"
-
-    def find(self, isbn):
-
-        path = []
-        current = self.root
-        while current:
-            path.append(str(current.isbn))
-            if isbn < current.isbn:
-                current = current.left
-            elif isbn > current.isbn:
-                current = current.right
-            else:  
-                return f"Found: {current.isbn} {current.title}\nPath: {', '.join(path)}"
-        return "Not found"
-
-    def remove(self, isbn):
-
-        node_to_remove = self._find_node_for_removal(isbn)
-        if not node_to_remove:
-            return "Book not found"
-        
-        title = node_to_remove.title
-        self.root = self._remove_recursive(self.root, isbn)
-        return f"Book {isbn} {title} removed"
-
-    def _find_node_for_removal(self, isbn):
+    def add_book(self, isbn, title):
+        """افزودن کتاب به صورت تکراری (iterative)."""
+        new_book = self.Book(isbn, title)
+        if not self.root:
+            self.root = new_book
+            print(f"Book {isbn} {title} added")
+            return
 
         node = self.root
         while node:
             if isbn < node.isbn:
+                if not node.left:
+                    node.left = new_book
+                    print(f"Book {isbn} {title} added")
+                    return
                 node = node.left
             elif isbn > node.isbn:
+                if not node.right:
+                    node.right = new_book
+                    print(f"Book {isbn} {title} added")
+                    return
                 node = node.right
             else:
-                return node
-        return None
+                print("Book already exists")
+                return
 
-    def _find_min_node(self, node):
+    def find_book(self, isbn):
+        """جستجوی کتاب و نمایش مسیر."""
+        node = self.root
+        path_str = []
+        while node:
+            path_str.append(str(node.isbn))
+            if isbn == node.isbn:
+                print(f"Found: {node.isbn} {node.title}")
+                print(f"Path: {', '.join(path_str)}")
+                return
+            elif isbn < node.isbn:
+                node = node.left
+            else:
+                node = node.right
+        print("Not found")
 
-        current = node
-        while current and current.left:
-            current = current.left
-        return current
+    def remove_book(self, isbn):
+        """حذف کتاب به صورت تکراری با یک باگ عمدی."""
+        parent = None
+        node = self.root
+        while node and node.isbn != isbn:
+            parent = node
+            if isbn < node.isbn:
+                node = node.left
+            else:
+                node = node.right
 
-    def _remove_recursive(self, node, isbn):
+        if not node:
+            print("Book not found")
+            return
 
-        if node is None:
-            return node
+        book_title = node.title
 
-        if isbn < node.isbn:
-            node.left = self._remove_recursive(node.left, isbn)
-        elif isbn > node.isbn:
-            node.right = self._remove_recursive(node.right, isbn)
+        # حالت ۱ و ۲: گره یک فرزند یا هیچ فرزندی ندارد
+        if not node.left or not node.right:
+            child = node.left if node.left else node.right
+            if not parent:
+                self.root = child
+            elif parent.left == node:
+                parent.left = child
+            else:
+                parent.right = child
+        # حالت ۳: گره دو فرزند دارد
         else:
-
-            if node.left is None:
-                return node.right
-            elif node.right is None:
-                return node.left
+            successor_parent = node
+            successor = node.right
+            while successor.left:
+                successor_parent = successor
+                successor = successor.left
             
-
-            temp = self._find_min_node(node.right)
-            node.isbn = temp.isbn
-            node.title = temp.title
-            node.right = self._remove_recursive(node.right, temp.isbn)
+            # کپی کردن اطلاعات جانشین
+            node.isbn = successor.isbn
+            node.title = successor.title
             
-        return node
+            # **!!! باگ عمدی !!!**
+            # زیردرخت راستِ گره جانشین به درستی متصل نمی‌شود و از دست می‌رود.
+            # کد صحیح باید `successor.right` را به جای گره جانشین قرار دهد.
+            if successor_parent.left == successor:
+                successor_parent.left = None  # به جای successor.right
+            else:
+                successor_parent.right = None # به جای successor.right
 
-    def show(self):
+        print(f"Book {isbn} {book_title} removed")
 
-        if self.root is None:
-            return "No books in library"
-        
-        result_lines = []
-        self._in_order_traversal(self.root, result_lines)
-        return "Books:\n" + "\n".join(result_lines)
+    def display_all(self):
+        """نمایش تمام کتاب‌ها با پیمایش میان‌ترتیب."""
+        if not self.root:
+            print("No books in library")
+            return
+            
+        print("Books:")
+        self._display_recursive(self.root)
 
-    def _in_order_traversal(self, node, result_lines):
-
+    def _display_recursive(self, node):
         if node:
-            self._in_order_traversal(node.left, result_lines)
-            result_lines.append(f"{node.isbn} {node.title}")
-            self._in_order_traversal(node.right, result_lines)
+            self._display_recursive(node.left)
+            print(f"{node.isbn} {node.title}")
+            self._display_recursive(node.right)
 
-def main():
 
-    library = LibraryBST()
+def run_manager():
+    """حلقه اصلی برای اجرای دستورات."""
+    manager = BookManager()
     while True:
         try:
-            line = input()
-            if not line.strip():
-                continue
+            command_line = input()
+            if not command_line: continue
             
-            parts = line.strip().split()
-            command = parts[0]
+            tokens = command_line.split()
+            cmd = tokens[0]
 
-            if command == "exit" and len(parts) == 1:
-                break
-            elif command == "add" and len(parts) == 3:
-                print(library.add(int(parts[1]), parts[2]))
-            elif command == "find" and len(parts) == 2:
-                print(library.find(int(parts[1])))
-            elif command == "remove" and len(parts) == 2:
-                print(library.remove(int(parts[1])))
-            elif command == "show" and len(parts) == 1:
-                print(library.show())
-            else:
-                print("invalid input")
-        
-        except (ValueError, IndexError):
+            if cmd == "exit": break
+            elif cmd == "add": manager.add_book(int(tokens[1]), tokens[2])
+            elif cmd == "find": manager.find_book(int(tokens[1]))
+            elif cmd == "remove": manager.remove_book(int(tokens[1]))
+            elif cmd == "show": manager.display_all()
+            else: print("invalid input")
+
+        except (IndexError, ValueError):
             print("invalid input")
         except EOFError:
             break
 
 if __name__ == "__main__":
-    main()
+    run_manager()
 
