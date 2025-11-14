@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-
-# گره درخت به صورت یک دیکشنری ساده نمایش داده می‌شود
 def create_node(isbn, title):
     return {"isbn": isbn, "title": title, "left": None, "right": None}
 
@@ -52,7 +49,7 @@ def delete_node(root, isbn):
 
     print(f"Book {node['isbn']} {node['title']} removed")
     
-    # مدیریت حذف
+
     if not node["left"] or not node["right"]:
         child = node["left"] or node["right"]
         if not parent: return child
@@ -88,7 +85,7 @@ def display_inorder(root):
 
 
 def main_loop():
-    """حلقه اصلی برای پردازش دستورات با رویکرد تابعی."""
+
     library_root = None
     while True:
         try:
