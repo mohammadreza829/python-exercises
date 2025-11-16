@@ -11,7 +11,13 @@ import random
 
 
 def print_board(board):
+    """
+    Display the current Tic Tac Toe board in a readable format.
 
+    Args:
+        board (list[list[str]]): 3x3 list representing the game board.
+                                 Each cell contains "X", "O", or " ".
+    """
     for i, row in enumerate(board):
         print(" | ".join(row))
         if i < 2:
