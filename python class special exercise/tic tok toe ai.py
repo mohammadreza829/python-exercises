@@ -20,7 +20,15 @@ def print_board(board):
 
 
 def check_winner(board):
+    """
+    Check the board for a winner.
 
+    Args:
+        board (list[list[str]]): The game board.
+
+    Returns:
+        str | None: "X" if player X wins, "O" if player O wins, or None if no winner yet.
+    """
     # Check rows and columns
     for i in range(3):
         # Row check
