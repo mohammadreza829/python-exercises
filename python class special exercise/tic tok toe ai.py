@@ -22,7 +22,7 @@ def print_board(board):
         print(" | ".join(row))
         if i < 2:
             print("-" * 9)
-    print()  # Blank line for spacing
+    print() 
 
 
 def check_winner(board):
@@ -35,7 +35,7 @@ def check_winner(board):
     Returns:
         str | None: "X" if player X wins, "O" if player O wins, or None if no winner yet.
     """
-    # Check rows and columns
+    # Check rows and columnsss
     for i in range(3):
         # Row check
         if board[i][0] == board[i][1] == board[i][2] != " ":
