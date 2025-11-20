@@ -141,7 +141,7 @@ def get_computer_move(board, computer="O", human="X"):
     if board[1][1] == " ":
         return 1, 1
 
-    # 4️⃣ Take one of the corners
+    # 4️⃣ Take one  the corners
     corners = [(0, 0), (0, 2), (2, 0), (2, 2)]
     available_corners = [pos for pos in corners if board[pos[0]][pos[1]] == " "]
     if available_corners:
