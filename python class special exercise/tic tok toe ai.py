@@ -153,7 +153,7 @@ def get_computer_move(board, computer="O", human="X"):
     if available_sides:
         return random.choice(available_sides)
 
-    # Fallback (should never happen)
+    # Fallback (should never)
     return None
 
 
