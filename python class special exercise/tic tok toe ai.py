@@ -137,7 +137,7 @@ def get_computer_move(board, computer="O", human="X"):
                     return i, j
                 board[i][j] = " "
 
-    # 3️⃣ Take center
+    
     if board[1][1] == " ":
         return 1, 1
 
