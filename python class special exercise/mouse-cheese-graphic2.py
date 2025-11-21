@@ -1,6 +1,6 @@
 from random import randint
 
-import numpy as np
+
 from matplotlib.colors import ListedColormap
 
 import matplotlib.pyplot as plt
