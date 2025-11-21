@@ -154,7 +154,7 @@ cheese_marker = ax.scatter(
     zorder=6,
 )
 
-# برچسب START/GOAL برای تجربه بهتر
+
 ax.text(
     mouse_col,
     mouse_row - 0.35,
