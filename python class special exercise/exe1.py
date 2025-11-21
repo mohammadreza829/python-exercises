@@ -9,7 +9,7 @@
 #         matrix[i][j] = randint(0, 1)
 
 # # چاپ ماتریس
-# for i in range(1, 11):  # فقط بخش میانی رو چاپ کن
+# for i in range(1, 11):
 #     for j in range(1, 11):
 #         print(matrix[i][j], end="  ")
 #     print()
