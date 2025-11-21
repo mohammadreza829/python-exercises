@@ -245,7 +245,7 @@
 # print(result) 
 
 
-# def memoizer(func):             #59 importanttttttttttttttttttttttttt
+# def memoizer(func):             #59 importantttttttttt
 #     cache = {}
 #     def wrapper(*args):
 #         if args in cache:
