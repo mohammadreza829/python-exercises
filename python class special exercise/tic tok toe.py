@@ -110,7 +110,7 @@ if __name__ == "__main__":
     main()
 
 
-# A simple command-line Tic Tac Toe game for two players.
+
 # Players take turns to enter their moves.
 # The game checks for a win or a draw after each move.
 # The board is displayed after each move.
