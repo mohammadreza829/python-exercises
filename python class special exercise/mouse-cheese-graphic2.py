@@ -54,7 +54,7 @@ def find_path(current_row, current_col, cheese_row, cheese_col):
     if current_row == cheese_row and current_col == cheese_col:
         return True
 
-    matrix[current_row][current_col] = 2  # علامت بازدید
+    matrix[current_row][current_col] = 2  
 
     for dr, dc in directions:
         new_row, new_col = current_row + dr, current_col + dc
