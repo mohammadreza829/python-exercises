@@ -600,4 +600,7 @@
 #         count -= 1
 #     print()
 
+# x = (input("Enter  x number : "))    
+# if x.isdigit()==True:
+#     print("digit  ")
 
