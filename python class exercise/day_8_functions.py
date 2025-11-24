@@ -311,7 +311,7 @@ print(a())
 
 
 
-def stateful_counter():     #68
+def stateful_counter():     
     counter = 0 
     def count():
         nonlocal counter
