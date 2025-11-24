@@ -311,15 +311,15 @@ print(a())
 
 
 
-def stateful_counter():     
-    counter = 0 
-    def count():
-        nonlocal counter
-        counter +=1
-        return counter
-    return count
+# def stateful_counter():     
+#     counter = 0 
+#     def count():
+#         nonlocal counter
+#         counter +=1
+#         return counter
+#     return count
 
-a= stateful_counter()
-print(a())
-print(a())
-print(a())
+# a= stateful_counter()
+# print(a())
+# print(a())
+# print(a())
