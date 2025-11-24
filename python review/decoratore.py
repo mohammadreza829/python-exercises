@@ -24,6 +24,6 @@ def dec(func):
 @dec
 def div(x,y):
     return x/y
-x = int(input("Enter  x number : "))
-y = int(input("Enter  y number : "))
+x = int(input("Enter  x number: "))
+y = int(input("Enter  y number: "))
 print(div(x,y))
