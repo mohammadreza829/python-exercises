@@ -317,3 +317,9 @@ def stateful_counter():     #68
         nonlocal counter
         counter +=1
         return counter
+    return count
+
+a= stateful_counter()
+print(a())
+print(a())
+print(a())
