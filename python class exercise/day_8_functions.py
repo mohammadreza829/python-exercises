@@ -308,3 +308,12 @@ print(a())
 #     return dispatcher
 
 # def error_handler(func, handlers_dict)          #89  shakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk  
+
+
+
+def stateful_counter():     #68
+    counter = 0 
+    def count():
+        nonlocal counter
+        counter +=1
+        return counter
