@@ -24,7 +24,7 @@ for i in range(1, x):
 
 
 
-# n = 4  # تعداد ردیف‌ها                                 #chat gpt
+# n = 4  # تعداد ردیف‌ها                                 #chat gpt     
 
 # for i in range(1, n + 1):
 #     row_numbers = []
