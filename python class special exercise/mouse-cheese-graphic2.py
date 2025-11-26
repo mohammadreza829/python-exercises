@@ -1,8 +1,5 @@
 from random import randint
-
-
 from matplotlib.colors import ListedColormap
-
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.colors import ListedColormap, BoundaryNorm
