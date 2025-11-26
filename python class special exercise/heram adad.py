@@ -1,7 +1,7 @@
 x = int(input("Enter a number: "))                                         #myself
 print(1)
 for i in range(1, x):
-    p = (i*2)-1  # جمله وسطه
+    p = (i*2)-1  #  وسطه
     q = 1
     while q < p:
         print(f"{q}", end=(" "))
