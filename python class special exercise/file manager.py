@@ -3,7 +3,7 @@ import shutil
 import tkinter as tk
 from tkinter import filedialog, messagebox
 
-# Mapping of file types to extensions
+
 FILE_TYPES = {
     "Documents": {
         "Word": ['.docx', '.doc'],
