@@ -13,9 +13,8 @@ def binary_search_exists(arr, target):
 
     return False
 
-
 if __name__ == "__main__":
-    # خواندن خط اول: لیست مرتب از اعداد
+
     line = input().strip()
     if line == "":
         nums = []
