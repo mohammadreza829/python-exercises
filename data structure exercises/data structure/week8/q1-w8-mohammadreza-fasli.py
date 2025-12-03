@@ -22,9 +22,9 @@ if __name__ == "__main__":
     else:
         nums = list(map(int, line.split()))
 
-    # خواندن خط دوم: عدد هدف
+
     target = int(input().strip())
 
-    # اجرای جستجوی دودویی و چاپ نتیجه
+
     exists = binary_search_exists(nums, target)
     print(exists)
