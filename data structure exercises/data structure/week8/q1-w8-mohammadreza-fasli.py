@@ -12,7 +12,6 @@ def binary_search_exists(arr, target):
             high = mid - 1
 
     return False
-
 if __name__ == "__main__":
 
     line = input().strip()
@@ -20,10 +19,7 @@ if __name__ == "__main__":
         nums = []
     else:
         nums = list(map(int, line.split()))
-
-
     target = int(input().strip())
-
-
+    
     exists = binary_search_exists(nums, target)
     print(exists)
