@@ -1,35 +1,43 @@
 import random
 
+def normalize_line(line):
+    line = line.strip().replace("،", ",")
+    parts = line.split()
+    if "," not in line and parts and parts[0].isdigit():
+        att = int(parts[0])
+        name = " ".join(parts[1:])
+    else:
+        left, right = line.split(",", 1)
+        name = left.strip()
+        att = int(right.strip())
+    return name, att
 
-def randomized_quick_sort(items):
-    if len(items) <= 1:
-        return items
 
-    pivot = random.choice(items)
-    bigger, equal, smaller = [], [], []
+def randomized_quick_sort(events):
+    if len(events) <= 1:
+        return events
 
-    for e in items:
-        if e[0] > pivot[0]:
-            bigger.append(e)
-        elif e[0] < pivot[0]:
-            smaller.append(e)
+    pivot = random.choice(events)
+    greater, equal, less = [], [], []
+
+    for ev in events:
+        if ev[1] > pivot[1]:
+            greater.append(ev)
+        elif ev[1] < pivot[1]:
+            less.append(ev)
         else:
-            equal.append(e)
+            equal.append(ev)
 
-    return randomized_quick_sort(bigger) + equal + randomized_quick_sort(smaller)
+    return randomized_quick_sort(greater) + equal + randomized_quick_sort(less)
 
 
 if __name__ == "__main__":
     n = int(input().strip())
     arr = []
     for _ in range(n):
-        line = input().rstrip()
-        parts = line.split()
-        num = int(parts[0])
-        name = " ".join(parts[1:])
-        arr.append((num, name))
+        nm, at = normalize_line(input())
+        arr.append((nm, at))
 
     sorted_arr = randomized_quick_sort(arr)
-
-    for num, name in sorted_arr:
-        print(f"{name} , {num}")
+    for nm, at in sorted_arr:
+        print(f"{nm}, {at}")
