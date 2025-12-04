@@ -102,7 +102,7 @@ norm = BoundaryNorm([0, 1, 2, 3], cmap.N)
 maze_square = np.array(matrix)
 plot = ax.imshow(maze_square, cmap=cmap, norm=norm, origin="upper")
 
-# grid خطوط
+
 ax.set_xticks(np.arange(-0.5, 11.5, 1), minor=True)
 ax.set_yticks(np.arange(-0.5, 11.5, 1), minor=True)
 ax.grid(which="minor", color="#bdbdbd", linestyle="--", linewidth=0.5)
