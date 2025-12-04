@@ -140,7 +140,7 @@
 # print("name:%s , age:%d"%(x45,x46))
 # print("name:{0}, age:{1}".format(x45,x46))
 
-# x47 = input("enter your edu:")            #59
+# x47 = input("enter your edu:")            
 # x48 = int(input("enter your age:"))
 # x49 = float(input("enter your gpa:"))
 # print("%s is %d years old and has gpa of %.1f "%(x47,x48,x49))
