@@ -1,35 +1,74 @@
-def quick_sort_projects(items):
+import sys
 
-    if len(items) <= 1:
-        return items
 
-    pivot = items[len(items) // 2]
-    less, equal, greater = [], [], []
+def median_of_three(arr, low, high):
+    mid = (low + high) // 2
 
-    for x in items:
-        if x[0] < pivot[0]:
-            less.append(x)
-        elif x[0] > pivot[0]:
-            greater.append(x)
-        else:
-            equal.append(x)
+    a = arr[low][0]
+    b = arr[mid][0]
+    c = arr[high][0]
 
-    return quick_sort_projects(less) + equal + quick_sort_projects(greater)
+    if (a - b) * (c - a) >= 0:
+        return low
+    elif (a - b) * (c - b) >= 0:
+        return mid
+    else:
+        return high
+
+
+def partition(arr, low, high):
+    pivot_index = median_of_three(arr, low, high)
+
+    arr[pivot_index], arr[high] = arr[high], arr[pivot_index]
+    pivot = arr[high][0]  
+
+    i = low - 1
+    for j in range(low, high):
+        if arr[j][0] <= pivot:
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]
+
+    arr[i + 1], arr[high] = arr[high], arr[i + 1]
+    return i + 1
+
+
+def quick_sort(arr, low, high):
+    if low < high:
+        pi = partition(arr, low, high)
+
+
+        quick_sort(arr, low, pi - 1)
+        quick_sort(arr, pi + 1, high)
+
+
+def main():
+
+    input_data = sys.stdin.read().splitlines()
+
+    if not input_data:
+        return
+
+    try:
+        n = int(input_data[0].strip())
+        projects = []
+
+        for line in input_data[1:]:
+            if not line.strip():
+                continue
+
+            parts = line.split(",")
+            score = int(parts[0].strip())
+            name = parts[1].strip()
+            projects.append((score, name))
+
+        quick_sort(projects, 0, len(projects) - 1)
+
+        for p in projects:
+            print(f"{p[0]} , {p[1]}")
+
+    except ValueError:
+        print("فرمت ورودی صحیح نیست.")
 
 
 if __name__ == "__main__":
-    n = int(input().strip())
-    projects = []
-
-    for _ in range(n):
-        line = input().rstrip()
-        parts = line.split()
-        score = int(parts[0])
-        name = " ".join(parts[1:])
-        projects.append((score, name))
-
-    sorted_projects = quick_sort_projects(projects)
-
-    for score, name in sorted_projects:
-
-        print(f"{score} ,{name}")
+    main()
