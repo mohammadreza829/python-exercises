@@ -12,24 +12,23 @@ table = [[] for _ in range(size)]
 
 def rehash_all():
     global size, table
-    old_items = []
+    old = []
     for bucket in table:
         for name in bucket:
-            old_items.append(name)
+            old.append(name)
     size *= 2
     table = [[] for _ in range(size)]
-    for name in old_items:
+    for name in old:
         idx = hash_name(name, size)
         table[idx].append(name)
 
-for name in names:
 
+for name in names:
     current_count = sum(len(b) for b in table)
     if current_count >= size:
         rehash_all()
-
-    index = hash_name(name, size)
-    table[index].append(name)
+    idx = hash_name(name, size)
+    table[idx].append(name)
 
 for i, bucket in enumerate(table):
-    print(f"خانه{i}: {bucket}")
+    print(f"{bucket} خانه {i}")
