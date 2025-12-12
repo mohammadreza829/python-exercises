@@ -31,4 +31,4 @@ for name in names:
     table[idx].append(name)
 
 for i, bucket in enumerate(table):
-    print(f"{bucket} خانه {i}")
+    print(f"خانه {i}: {bucket}")
