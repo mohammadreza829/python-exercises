@@ -63,18 +63,31 @@ class BankSystem:
             return None
 
     def find_by_name(self, name):
-    # این حلقه میره توی تک تک اشیاء حساب که ذخیره کردی می‌گرده
+        # این حلقه میره توی تک تک اشیاء حساب که ذخیره کردی می‌گرده
         for account in self.accounts.values():
             if account.owner_name == name:
-                return account # اگه پیدا کرد، کلِ شیء حساب رو برمی‌گردونه
+                return account  # اگه پیدا کرد، کلِ شیء حساب رو برمی‌گردونه
         print("No account found with this name.")
         return None
 
+
 if __name__ == "__main__":
-    # Test section - Only runs when bank.py is executed directly
-    print("Running Test Mode...")
-    my_acc = BankAccount("Ali", 5000)
-    my_acc.display_info()
-    my_acc.deposit(1000)
-    my_acc.withdraw(200)
-    print(f"Final Test Balance: {my_acc.get_balance()}")
+    bank_system = BankSystem()
+
+    # لیستی از اطلاعات تستی (نام، موجودی اولیه)
+    test_users = [
+        ("Alice", 10000),
+        ("Bob", 2000),
+        ("Charlie", 500),
+        ("David", 0),
+        ("Eve", 50000),
+    ]
+
+    print("--- Automatically Registering Users ---")
+    for name, balance in test_users:
+        bank_system.add_account(name, balance)
+
+    print("\n--- Current Accounts in System ---")
+    # نمایش کل حساب‌های ثبت شده برای اطمینان
+    for acc in bank_system.accounts.values():
+        print(f"Name: {acc.owner_name} | Balance: {acc.get_balance()}")
