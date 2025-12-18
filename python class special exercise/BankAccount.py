@@ -42,3 +42,4 @@ class BankAccount:
 # کاربر فقط اسم و پولش رو میده، سیستم بقیه کارها رو میکنه
 my_acc = BankAccount("Ali", 5000)
 my_acc.display_info()
+my_acc.deposit(1000)
