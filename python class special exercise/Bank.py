@@ -1,5 +1,6 @@
 import random
 
+
 class BankAccount:
     def __init__(self, owner_name, initial_balance):
         self.owner_name = owner_name
@@ -19,7 +20,7 @@ class BankAccount:
 
     def get_account_number(self):
         return self.__account_number
-    
+
     def withdraw(self, amount):
         if 0 < amount <= self.__balance:
             self.__balance -= amount
@@ -38,19 +39,36 @@ class BankAccount:
         print(f"Account Number: {self.__account_number}")
         print(f"Current Balance: {self.__balance}")
         print("-----------------------")
-        
-        
-        
+
+
 class BankSystem:
-    
     def __init__(self):
-        
-        self.accounts = {}
-    
+        self.accounts = {}  # دیکشنری برای ذخیره: {account_number: account_object}
+
     def add_account(self, name, initial_balance):
         new_account = BankAccount(name, initial_balance)
-        self.accounts[name] = new_account
-        
+        # گرفتن شماره حساب از شیء ساخته شده
+        acc_num = new_account.get_account_number()
+        # ذخیره در دیکشنری با کلیدِ شماره حساب
+        self.accounts[acc_num] = new_account
+        print(f"Account created for {name}. Your Account Number is: {acc_num}")
+        return acc_num  # شماره رو برمی‌گردانیم تا کاربر بدونه چیه
+
+    def find_account(self, acc_num):
+        # جستجو بر اساس شماره حساب
+        if acc_num in self.accounts:
+            return self.accounts[acc_num]
+        else:
+            print("Account not found!")
+            return None
+
+    def find_by_name(self, name):
+    # این حلقه میره توی تک تک اشیاء حساب که ذخیره کردی می‌گرده
+        for account in self.accounts.values():
+            if account.owner_name == name:
+                return account # اگه پیدا کرد، کلِ شیء حساب رو برمی‌گردونه
+        print("No account found with this name.")
+        return None
 
 if __name__ == "__main__":
     # Test section - Only runs when bank.py is executed directly
