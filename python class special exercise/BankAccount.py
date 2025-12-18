@@ -10,10 +10,17 @@ class BankAccount:
         return random.randint(1000000000 , 9999999999)
     
     def deposit(self , amount):
-        self.__balance += amount
-    
+        if amount > 0 :
+            self.__balance += amount
+        else:
+            print("Amount must be greater than 0")
     def withdraw(self , amount):
-        self.__balance -= amount
+        if amount > self.__balance :
+            print("Insufficient balance")
+        elif amount < 0:
+            print("Amount must be greater than 0")
+        else:
+            self.__balance -= amount
     
     def get_balance(self):
         return self.__balance
