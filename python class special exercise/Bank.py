@@ -17,6 +17,9 @@ class BankAccount:
         else:
             print("Error: Deposit amount must be positive.")
 
+    def get_account_number(self):
+        return self.__account_number
+    
     def withdraw(self, amount):
         if 0 < amount <= self.__balance:
             self.__balance -= amount
@@ -35,6 +38,19 @@ class BankAccount:
         print(f"Account Number: {self.__account_number}")
         print(f"Current Balance: {self.__balance}")
         print("-----------------------")
+        
+        
+        
+class BankSystem:
+    
+    def __init__(self):
+        
+        self.accounts = {}
+    
+    def add_account(self, name, initial_balance):
+        new_account = BankAccount(name, initial_balance)
+        self.accounts[name] = new_account
+        
 
 if __name__ == "__main__":
     # Test section - Only runs when bank.py is executed directly
