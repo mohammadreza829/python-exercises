@@ -74,7 +74,6 @@ class BankSystem:
 if __name__ == "__main__":
     bank_system = BankSystem()
 
-    # لیستی از اطلاعات تستی (نام، موجودی اولیه)
     test_users = [
         ("Alice", 10000),
         ("Bob", 2000),
@@ -87,7 +86,4 @@ if __name__ == "__main__":
     for name, balance in test_users:
         bank_system.add_account(name, balance)
 
-    print("\n--- Current Accounts in System ---")
-    # نمایش کل حساب‌های ثبت شده برای اطمینان
-    for acc in bank_system.accounts.values():
-        print(f"Name: {acc.owner_name} | Balance: {acc.get_balance()}")
+

@@ -2,6 +2,10 @@ from Bank import BankAccount, BankSystem
 
 my_bank = BankSystem()
 
+test_users = [("Alice", 10000), ("Bob", 2000)]
+for name, bal in test_users:
+    my_bank.add_account(name, bal)
+    
 while True:
     print("\n========= GLOBAL BANK MENU =========")
     print("1. Open New Account")
@@ -12,6 +16,7 @@ while True:
     print("6. Exit")
     print("====================================")
 
+    print("Current users in system:", [acc.owner_name for acc in my_bank.accounts.values()])
     choice = input("Select an option (1-6): ")
 
     # --- گزینه 1: افتتاح حساب ---
