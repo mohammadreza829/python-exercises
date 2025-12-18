@@ -1,4 +1,6 @@
 import random
+
+
 class BankAccount:
     # ۱. فقط نام و موجودی اولیه رو از کاربر می‌گیریم
     def __init__(self, owner_name, initial_balance):
@@ -40,6 +42,8 @@ class BankAccount:
 
 # --- حالا ببین چقدر راحت ساخته می‌شه ---
 # کاربر فقط اسم و پولش رو میده، سیستم بقیه کارها رو میکنه
-my_acc = BankAccount("Ali", 5000)
-my_acc.display_info()
-my_acc.deposit(1000)
+if __name__ == "__main__":
+    # کدهای تست تو اینجا قرار می‌گیرند
+    my_acc = BankAccount("Ali", 5000)
+    my_acc.display_info()
+    my_acc.deposit(1000)
